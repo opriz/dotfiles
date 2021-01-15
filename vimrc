@@ -77,7 +77,7 @@ nmap <C-k> <C-w>k
 
 "==============terminal mode==============
 "打开terminal
-nmap <C-t> :sp<CR><C-w>j:term<CR>:res-15<CR>  
+nmap <leader>t :sp<CR><C-w>j:term<CR>:res-15<CR>  
 "退出terminal
 tnoremap <Esc> <C-\><C-n>
 
@@ -98,7 +98,6 @@ nmap + :tabnext<CR>
 map <C-n> :NERDTreeToggle<CR>
 autocmd VimEnter * NERDTree | wincmd p
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-autocmd! bufwritepost vimrc source $MY_VIMRC
 
 "=====================taglist/tagbar=====================
 let Tlist_Exit_OnlyWindow = 1
