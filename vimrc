@@ -37,7 +37,7 @@ set background=dark
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 set termencoding=utf-8
 set encoding=utf-8
-set textwidth=75
+set textwidth=200
 set cursorline                          "突出显示当前行
 set nobackup                            "禁止备份文件
 set noswapfile                          "禁止交换文件
