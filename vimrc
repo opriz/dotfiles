@@ -41,7 +41,7 @@ set textwidth=200
 set cursorline                          "突出显示当前行
 set nobackup                            "禁止备份文件
 set noswapfile                          "禁止交换文件
-set autochdir                           "自动切换工作目录为当前目录
+"set autochdir                          "自动切换工作目录为当前目录,开启后cscope会报错
 set backspace=indent,eol,start          "修复退格键无法使用的问题
 set hlsearch
 set noerrorbells                        "关闭报警声
@@ -133,3 +133,35 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 "let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 "let g:ycm_autoclose_preview_window_after_insertion = 1
 "let g:python3_host_prog = '/usr/bin/python3'
+"
+
+if filereadable("cscope.out") 
+    cs add cscope.out 
+endif
+if has("cscope")
+   set cscopetag   " 使支持用 Ctrl+]  和 Ctrl+t 快捷键在代码间跳来跳去
+   " check cscope for definition of a symbol before checking ctags:
+   " set to 1 if you want the reverse search order.
+    set csto=1
+
+    " add any cscope database in current directory
+    if filereadable("cscope.out")
+        cs add cscope.out
+    " else add the database pointed to by environment variable
+    elseif $CSCOPE_DB !=""
+        cs add $CSCOPE_DB
+    endif
+
+    " show msg when any other cscope db added
+    set cscopeverbose
+
+    nmap <C-/>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-/>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-/>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-/>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-/>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-/>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+    nmap <C-/>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+    nmap <C-/>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+endif
+
