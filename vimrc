@@ -10,6 +10,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'fatih/vim-go'
 Plug 'majutsushi/tagbar'
+Plug 'ianding1/leetcode.vim'
 "Plug 'buoto/gotests-vim'
 "Plug 'tpope/vim-fugitive'
 "Plug 'ervandew/supertab'
@@ -64,6 +65,8 @@ imap <C-h> <ESC>i
 imap <C-l> <ESC>la
 imap <C-a> <C-o>0
 imap <C-e> <C-o>$
+imap <C-f> <ESC>la
+imap <C-b> <ESC>i
 
 "==============zoom window==============
 nmap <C-=> <C-W>+
@@ -164,4 +167,10 @@ if has("cscope")
     nmap <C-/>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
     nmap <C-/>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 endif
+
+"===============LEETCODE==================
+let g:leetcode_china=1
+let g:leetcode_solution_filetype='golang'
+let g:leetcode_browser='chrome'
+let g:leetcode_hide_paid_only=1
 
